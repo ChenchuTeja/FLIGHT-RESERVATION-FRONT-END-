@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Changed background color to light gray */
+            color: #333;
+        }
+
+        header {
+            background-color: #2980b9; /* Changed header background color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .ticket-details {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .ticket-details h2 {
+            margin-top: 0;
+        }
+
+        .ticket-details p {
+            margin: 5px 0;
+        }
+
+        .continue-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .continue-button button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .continue-button button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Selected Ticket</h1>
+    </header>
+
+    <div class="container">
+        <div class="ticket-details" id="ticketDetails">
+            <!-- Ticket details will be dynamically inserted here -->
+        </div>
+
+        <div class="continue-button">
+            <button onclick="continueWithPayment()">Continue with Payment</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to parse query parameters from URL
+        function getQueryParams() {
+            const queryParams = {};
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            for (const [key, value] of urlParams.entries()) {
+                queryParams[key] = value;
+            }
+
+            return queryParams;
+        }
+
+        // Function to display the selected ticket details
+        function displayTicketDetails() {
+            const ticketDetails = document.getElementById('ticketDetails');
+            const queryParams = getQueryParams();
+
+            if (queryParams.flight && queryParams.details) {
+                const ticketInfo = queryParams.details.split('\n');
+                ticketDetails.innerHTML = `<h2>Flight Details</h2>`;
+                ticketDetails.innerHTML += `<p><strong>Flight:</strong> ${queryParams.flight}</p>`;
+                ticketInfo.forEach(info => {
+                    ticketDetails.innerHTML += `<p>${info}</p>`;
+                });
+            } else {
+                ticketDetails.innerHTML = `<p>No ticket selected.</p>`;
+            }
+        }
+
+        // Function to continue with payment
+        function continueWithPayment() {
+            window.location.href = 'payment.html';
+        }
+
+        // Call the function to display ticket details on page load
+        displayTicketDetails();
+    </script>
+</body>
+
+</html>

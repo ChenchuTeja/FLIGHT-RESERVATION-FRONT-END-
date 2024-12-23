@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://images.freeimages.com/images/large-previews/1cd/white-commercial-airplane-taking-off-on-the-airport-runway-at-sunset-passenger-airplane-is-taking-o-1639554.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(229, 228, 228, 0.977);
+        }
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 250px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username"><br>
+            <input type="password" id="password" placeholder="Password"><br>
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="register.html">Register</a></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            // Here you can perform your login authentication logic
+            
+            // For demonstration purpose, redirecting to home page
+            window.location.href = "file:///C:/Users/danyt/OneDrive/Documents/Desktop/html%20files/home.html"; // Change "home.html" to your actual home page URL
+        });
+    </script>
+</body>
+</html>

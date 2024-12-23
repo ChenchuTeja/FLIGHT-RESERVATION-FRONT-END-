@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3498db; /* Changed background color to blue */
+        }
+
+        header {
+            background-color: #2980b9; /* Changed header background color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            max-height: 400px; /* Added maximum height for scrolling */
+            overflow-y: auto; /* Enabled vertical scrolling */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        li:hover {
+            background-color: #e9e9e9;
+            cursor: pointer;
+        }
+
+        input[type="button"] {
+            background-color: #2980b9; /* Changed button color */
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        input[type="button"]:hover {
+            background-color: #1c6ca6; /* Darker hover color */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Flight Selection</h1>
+    </header>
+
+    <div class="container">
+        <ul>
+            <li>
+                <input type="radio" id="flight1" name="flight" value="Flight 1">
+                <label for="flight1">Flight 1</label>
+                <p>Departure: chennai - Arrival: hyderbad </p>
+                <p>Departure Time: 10:00 AM - Arrival Time: 3:00 PM</p>
+                <p>Price: 500/-</p>
+            </li>
+            <li>
+                <input type="radio" id="flight2" name="flight" value="Flight 2">
+                <label for="flight2">Flight 2</label>
+                <p>Departure: hyderabad - Arrival: tirupati </p>
+                <p>Departure Time: 4:00 PM - Arrival Time: 6:00 PM</p>
+                <p>Price: 300/-</p>
+            </li>
+            <!-- Add more flights below -->
+            <li>
+                <input type="radio" id="flight3" name="flight" value="Flight 3">
+                <label for="flight3">Flight 3</label>
+                <p>Departure: benguluru  - Arrival: chennai </p>
+                <p>Departure Time: 8:00 PM - Arrival Time: 1:00 PM (Next Day)</p>
+                <p>Price: 800/-</p>
+            </li>
+            <li>
+                <input type="radio" id="flight4" name="flight" value="Flight 4">
+                <label for="flight4">Flight 4</label>
+                <p>Departure: goa - Arrival: kerala </p>
+                <p>Departure Time: 3:00 PM - Arrival Time: 10:00 PM</p>
+                <p>Price: 900/-</p>
+            </li>
+            <li>
+                <input type="radio" id="flight5" name="flight" value="Flight 5">
+                <label for="flight5">Flight 5</label>
+                <p>Departure: delhi - Arrival: Dubai</p>
+                <p>Departure Time: 8:00 AM - Arrival Time: 1:00 PM</p>
+                <p>Price: 7000/-</p>
+            </li>
+            <li>
+                <input type="radio" id="flight6" name="flight" value="Flight 6">
+                <label for="flight6">Flight 6</label>
+                <p>Departure: Dubai - Arrival: chennai</p>
+                <p>Departure Time: 11:00 PM - Arrival Time: 7:00 AM (Next Day)</p>
+                <p>Price: 18000/-</p>
+            </li>
+            <li>
+                <input type="radio" id="flight7" name="flight" value="Flight 7">
+                <label for="flight7">Flight 7</label>
+                <p>Departure: London (LHR) - Arrival: Beijing (PEK)</p>
+                <p>Departure Time: 9:00 AM - Arrival Time: 3:00 PM</p>
+                <p>Price: $600</p>
+            </li>
+            <li>
+                <input type="radio" id="flight8" name="flight" value="Flight 8">
+                <label for="flight8">Flight 8</label>
+                <p>Departure: Beijing (PEK) - Arrival: Los Angeles (LAX)</p>
+                <p>Departure Time: 5:00 PM - Arrival Time: 3:00 PM</p>
+                <p>Price: $850</p>
+            </li>
+        </ul>
+
+        <input type="button" value="Select Flight" onclick="selectFlight()">
+    </div>
+
+    <script>
+        function selectFlight() {
+            const selectedFlight = document.querySelector('input[name="flight"]:checked');
+
+            if (selectedFlight) {
+                const queryParams = `?flight=${selectedFlight.value}&details=${selectedFlight.parentElement.innerText}`;
+                window.location.href = `display.html${queryParams}`;
+            } else {
+                alert("Please select a flight before proceeding.");
+            }
+        }
+    </script>
+</body>
+
+</html>
